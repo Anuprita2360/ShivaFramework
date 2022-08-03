@@ -7,63 +7,77 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-public class ListenerImplementation implements ITestListener,ISuiteListener,IRetryAnalyzer{
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
+import com.aventstack.extentreports.reporter.configuration.Theme;
+
+public class ListenerImplementation implements ITestListener,IRetryAnalyzer{
 	int count =0;
 	int maxRetrycount=3;
-
-	@Override
-	public void onStart(ISuite suite) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void onFinish(ISuite suite) {
-		// TODO Auto-generated method stub
-		
-	}
+	private ExtentReports report;
+	private ExtentTest test ;
+	public static  ExtentTest testlog ;
 
 	@Override
 	public void onTestStart(ITestResult result) {
-		// TODO Auto-generated method stub
+		 test = report.createTest(result.getMethod().getMethodName());
+		 test.assignAuthor("siva");
+		 test.assignCategory("sanity testing");
+		  testlog = test;
+		
 		
 	}
 
 	@Override
 	public void onTestSuccess(ITestResult result) {
-		// TODO Auto-generated method stub
+		test.pass(result.getMethod().getMethodName()+" is pass");
 		
 	}
 
 	@Override
 	public void onTestFailure(ITestResult result) {
+		test.fail(result.getMethod().getMethodName()+"is failed");
+		test.fail(result.getThrowable());
+		String pathofScreenShot = ThreadSafeClass.getDriver1().takeScreenShotPage(ThreadSafeClass.getDriver());
+		test.addScreenCaptureFromBase64String(pathofScreenShot, result.getMethod().getMethodName());
 		
-     ThreadSafeClass.getDriver1().TakesScreenShot(result.getMethod().getMethodName(), ThreadSafeClass.getDriver2());		
+		//test.addScreenCaptureFromBase64String(pathofScreenShot);
+    // ThreadSafeClass.getDriver1().TakesScreenShot(result.getMethod().getMethodName(), ThreadSafeClass.getDriver2());		
 	
 		
 	}
 
 	@Override
 	public void onTestSkipped(ITestResult result) {
-		// TODO Auto-generated method stub
 		
+		test.skip(result.getMethod().getMethodName()+" is skipped");
+		test.skip(result.getThrowable());
 	}
 
 	@Override
 	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
-		// TODO Auto-generated method stub
+	
 		
 	}
 
-	@Override
+	@Override //@Before test
 	public void onStart(ITestContext context) {
-		// TODO Auto-generated method stub
+	    ExtentSparkReporter spark = new ExtentSparkReporter("./extentreport-output/emailable-extentreport.html");
+		spark.config().setDocumentTitle("Document Tiltle");
+		spark.config().setReportName("report name");
+		spark.config().setTheme(Theme.DARK);
+		 report = new ExtentReports();
+		 report.attachReporter(spark);
+		 report.setSystemInfo("os","Windows 10");
+		 report.setSystemInfo("Browser Name", "Chrome");
+		 report.setSystemInfo("Browser version","103.11.234");
 		
 	}
 
 	@Override
 	public void onFinish(ITestContext context) {
-		// TODO Auto-generated method stub
+		report.flush();
 		
 	}
 

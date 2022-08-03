@@ -14,11 +14,6 @@
           <include name="createCampaignTest"/>
         </methods>
       </class> <!-- org.vtiger.campaigns.CreateCampaignTest -->
-      <class name="org.vtiger.campaigns.CreateCampaignWithProductTest">
-        <methods>
-          <include name="createCampaignWithProductTest"/>
-        </methods>
-      </class> <!-- org.vtiger.campaigns.CreateCampaignWithProductTest -->
     </classes>
   </test> <!-- Test(failed) -->
 </suite> <!-- Failed suite [Suite] -->

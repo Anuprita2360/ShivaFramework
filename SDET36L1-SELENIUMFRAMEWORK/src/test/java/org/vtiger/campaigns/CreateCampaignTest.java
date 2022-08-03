@@ -1,6 +1,5 @@
 package org.vtiger.campaigns;
 
-import org.testng.Assert;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.tyss.genericUtility.BaseClass;
@@ -18,7 +17,7 @@ public class CreateCampaignTest extends BaseClass {
 		//fetch the data from excel file
 		String sheetName = "campaignmodule";
 		String expectedCampaignName = excelutility.getDataFromExcel(2, 1,sheetName )+randomNumber;
-		Assert.fail();
+		//Assert.fail();
 
 		String actualCampaignName =commonpage.ClickCampaign(webdriver).ClickOnCreateCampaignBtn().createCampaign(expectedCampaignName).SaveCampaign().getActualCampaignName();
 	

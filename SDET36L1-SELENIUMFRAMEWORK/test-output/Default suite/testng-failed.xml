@@ -3,15 +3,11 @@
 <suite parallel="none" name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test parallel="none" name="Default test(failed)">
     <classes>
-      <class name="org.vtiger.campaigns.CreateCampaignTest">
+      <class name="org.vtiger.practice.ExtentReportPractice">
         <methods>
-          <include name="classTearDown"/>
-          <include name="createCampaignTest"/>
-          <include name="classSetup"/>
-          <include name="methodTearDown"/>
-          <include name="methodSetUp"/>
+          <include name="extentReportPractice"/>
         </methods>
-      </class> <!-- org.vtiger.campaigns.CreateCampaignTest -->
+      </class> <!-- org.vtiger.practice.ExtentReportPractice -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

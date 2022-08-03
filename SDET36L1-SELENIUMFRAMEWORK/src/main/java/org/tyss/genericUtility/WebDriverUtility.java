@@ -85,8 +85,8 @@ public final class WebDriverUtility {
 	public void explicitWaitByVisbilityOf(WebElement element) {
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
-	/**
-	 * This method is used to wait the page until the element is invisible
+	/**.
+ 	 * This method is used to wait the page until the element is invisible
 	 * @param element
 	 */
 	public void explicitWaitByInvisbilityOf(WebElement element) {
@@ -291,6 +291,14 @@ public final class WebDriverUtility {
 			e.printStackTrace();
 		}
 
+	}
+	
+
+	
+	public String takeScreenShotPage(WebDriver driver) {
+		TakesScreenshot ts=(TakesScreenshot)driver;
+		String path = ts.getScreenshotAs(OutputType.BASE64);
+		return path;
 	}
 	/**
 	 * This method is used to take the screenshot of particular webelement

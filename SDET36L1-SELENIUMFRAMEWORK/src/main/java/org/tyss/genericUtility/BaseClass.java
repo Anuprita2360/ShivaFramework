@@ -10,11 +10,11 @@ import org.vtiger.pom.LoginPage;
 
 public class BaseClass extends instanceClass
 {
-	//@Parameters("browser")
+	@Parameters("browser")
 	@BeforeClass(groups = "common")
-	//public void classSetup(String browser) {
+	public void classSetup(String browser) {
 		
-		public void classSetup() {
+		//public void classSetup() {
 		//creating object for the class
 		System.out.println("Before Class "+Thread.currentThread().getId());
 		fileutility=new FileUtility();
@@ -35,7 +35,7 @@ public class BaseClass extends instanceClass
 		url = fileutility.getDataFromProperty("url");
 		username = fileutility.getDataFromProperty("username");
 		password = fileutility.getDataFromProperty("password");
-		browser = fileutility.getDataFromProperty("browser");
+		//browser = fileutility.getDataFromProperty("browser");
 		String timeout = fileutility.getDataFromProperty("timeout");
 
 		//converting string to long
