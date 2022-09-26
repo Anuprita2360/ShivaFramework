@@ -14,7 +14,7 @@ public class CreateCampaignTest extends BaseClass {
 	public void createCampaignTest()  {
 
 		System.out.println("Create compaign Class "+Thread.currentThread().getId());
-		//fetch the data from excel file
+		//fetch the data from excel file gdhfjahfa
 		String sheetName = "campaignmodule";
 		String expectedCampaignName = excelutility.getDataFromExcel(2, 1,sheetName )+randomNumber;
 		//Assert.fail();
