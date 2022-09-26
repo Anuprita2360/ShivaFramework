@@ -35,7 +35,7 @@ public class CreateCampaignTest extends BaseClass {
 			excelutility.saveOutputIntoExcel(IPathContants.VTIGEREXCELFILEPATH);
 			javautility.printStatement("The data is entered");
 		}
-		//Assert.fail();
+		Assert.fail();
 
 
 
